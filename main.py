@@ -35,14 +35,35 @@ class ImageProcessor:
         self.threshold.pack(pady=5)
         
         # Image displays
-        self.label_original = tk.Label(self.frame_right)
-        self.label_original.pack(pady=5)
-        
-        self.label_grayscale = tk.Label(self.frame_right)
-        self.label_grayscale.pack(pady=5)
-        
-        self.label_threshold = tk.Label(self.frame_right)
-        self.label_threshold.pack(pady=5)
+        self.images_frame = tk.Frame(self.frame_right)
+        self.images_frame.pack(pady=5)
+
+        # Container untuk Original Image
+        self.original_frame = tk.Frame(self.images_frame)
+        self.original_frame.pack(side=tk.LEFT, padx=10)
+
+        self.original_title = tk.Label(self.original_frame, text="Original Image", justify='center')
+        self.original_title.pack(anchor='center')
+        self.label_original = tk.Label(self.original_frame)
+        self.label_original.pack()
+
+        # Container untuk Grayscale Image
+        self.grayscale_frame = tk.Frame(self.images_frame)
+        self.grayscale_frame.pack(side=tk.LEFT, padx=10)
+
+        self.grayscale_title = tk.Label(self.grayscale_frame, text="Grayscale Image", justify='center')
+        self.grayscale_title.pack(anchor='center')
+        self.label_grayscale = tk.Label(self.grayscale_frame)
+        self.label_grayscale.pack()
+
+        # Container untuk Thresholded Image
+        self.threshold_frame = tk.Frame(self.frame_right)
+        self.threshold_frame.pack(pady=5)
+
+        self.threshold_title = tk.Label(self.threshold_frame, text="Thresholded Image", justify='center')
+        self.threshold_title.pack(anchor='center')
+        self.label_threshold = tk.Label(self.threshold_frame)
+        self.label_threshold.pack() 
         
     def load_image(self):
         file_path = filedialog.askopenfilename()
